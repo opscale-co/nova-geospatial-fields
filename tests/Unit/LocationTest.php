@@ -35,13 +35,13 @@ it('accepts an array payload', function (): void {
     };
 
     $request = NovaRequest::create('/', 'POST', [
-        'location' => ['type' => 'Point', 'coordinates' => [1.0, 2.0]],
+        'location' => ['type' => 'Point', 'coordinates' => [1, 2]],
     ]);
 
     invokeFill($field, $request, 'location', $model, 'location');
 
     expect(json_decode($model->location, true))
-        ->toBe(['type' => 'Point', 'coordinates' => [1.0, 2.0]]);
+        ->toBe(['type' => 'Point', 'coordinates' => [1, 2]]);
 });
 
 it('writes null when the submitted value is null', function (): void {
