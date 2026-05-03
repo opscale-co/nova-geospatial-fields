@@ -18,9 +18,19 @@ final class FieldServiceProvider extends ServiceProvider
             __DIR__.'/../config/nova-geospatial-fields.php' => config_path('nova-geospatial-fields.php'),
         ], 'nova-geospatial-fields-config');
 
+        $this->publishes([
+            __DIR__.'/../lang' => $this->app->langPath('vendor/nova-geospatial-fields'),
+        ], 'nova-geospatial-fields-lang');
+
         Nova::serving(function (ServingNova $servingNova): void {
             Nova::script('nova-geospatial-fields', __DIR__.'/../dist/js/field.js');
             Nova::style('nova-geospatial-fields', __DIR__.'/../dist/css/field.css');
+
+            $locale = app()->getLocale();
+            $translations = __DIR__.'/../lang/'.$locale.'.json';
+            if (is_file($translations)) {
+                Nova::translations($translations);
+            }
         });
     }
 

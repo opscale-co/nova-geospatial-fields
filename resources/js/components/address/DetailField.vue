@@ -10,7 +10,7 @@
                     <span class="geo-field-summary" data-testid="geo-address-label">{{ formatted }}</span>
                 </div>
                 <div v-if="!point" class="geo-field-empty" data-testid="geo-address-empty">
-                    No address set
+                    {{ __('No address set') }}
                 </div>
                 <div v-else ref="mapEl" class="geo-field-map" data-testid="geo-address-map" />
             </div>
@@ -59,7 +59,7 @@ export default {
         initMap() {
             const { map, L } = createMap(this.$refs.mapEl, {
                 center: [this.point.lat, this.point.lng],
-                zoom: this.field.defaultZoom || 16,
+                zoom: this.field.defaultZoom || 17,
                 tileLayer: this.field.tileLayer || {},
             })
             this.map = map

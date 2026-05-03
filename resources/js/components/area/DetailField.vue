@@ -7,12 +7,12 @@
                 data-testid="geo-area-detail"
             >
                 <div v-if="!point" class="geo-field-empty" data-testid="geo-area-empty">
-                    No area set
+                    {{ __('No area set') }}
                 </div>
                 <template v-else>
                     <div class="geo-field-toolbar">
                         <span class="geo-field-summary" data-testid="geo-area-summary">
-                            Center {{ point.lat.toFixed(4) }}, {{ point.lng.toFixed(4) }} · Radius {{ radius }} m
+                            {{ __('Center :lat, :lng · Radius :radius m', { lat: point.lat.toFixed(4), lng: point.lng.toFixed(4), radius }) }}
                         </span>
                     </div>
                     <div ref="mapEl" class="geo-field-map" data-testid="geo-area-map" />

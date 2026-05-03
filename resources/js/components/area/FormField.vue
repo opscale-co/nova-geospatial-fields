@@ -9,7 +9,7 @@
             <div class="geo-field-wrapper is-form" data-testid="geo-area-form">
                 <div class="geo-field-toolbar">
                     <label class="geo-field-radius-control">
-                        Radius (m)
+                        {{ __('Radius (m)') }}
                         <input
                             v-model.number="radius"
                             type="number"
@@ -26,9 +26,9 @@
                         :disabled="!point"
                         @click="clear"
                     >
-                        Clear
+                        {{ __('Clear') }}
                     </button>
-                    <span class="geo-field-hint">Click the map to set the center, adjust radius above.</span>
+                    <span class="geo-field-hint">{{ __('Click the map to set the center, adjust radius above.') }}</span>
                 </div>
                 <div ref="mapEl" class="geo-field-map" data-testid="geo-area-map" />
             </div>

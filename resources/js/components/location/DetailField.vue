@@ -7,7 +7,7 @@
                 data-testid="geo-location-detail"
             >
                 <div v-if="!point" class="geo-field-empty" data-testid="geo-location-empty">
-                    No location set
+                    {{ __('No location set') }}
                 </div>
                 <div v-else ref="mapEl" class="geo-field-map" data-testid="geo-location-map" />
             </div>
@@ -56,7 +56,7 @@ export default {
         initMap() {
             const { map, L } = createMap(this.$refs.mapEl, {
                 center: [this.point.lat, this.point.lng],
-                zoom: this.field.defaultZoom || 15,
+                zoom: this.field.defaultZoom || 17,
                 tileLayer: this.field.tileLayer || {},
                 interactive: !this.field.readonlyMap,
             })

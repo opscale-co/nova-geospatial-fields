@@ -7,7 +7,7 @@
                 data-testid="geo-geofence-detail"
             >
                 <div v-if="!hasPolygon" class="geo-field-empty" data-testid="geo-geofence-empty">
-                    No geofence set
+                    {{ __('No geofence set') }}
                 </div>
                 <div v-else ref="mapEl" class="geo-field-map" data-testid="geo-geofence-map" />
             </div>

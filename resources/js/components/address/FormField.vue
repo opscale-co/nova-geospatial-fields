@@ -13,7 +13,7 @@
                         type="text"
                         class="geo-field-search-input"
                         data-testid="geo-address-search"
-                        :placeholder="`Search address (via ${driver})…`"
+                        :placeholder="__('Search address (via :driver)…', { driver })"
                         @keydown.enter.prevent="search"
                     >
                     <button
@@ -23,7 +23,7 @@
                         :disabled="searching || !query.trim()"
                         @click="search"
                     >
-                        {{ searching ? 'Searching…' : 'Search' }}
+                        {{ searching ? __('Searching…') : __('Search') }}
                     </button>
                     <button
                         type="button"
@@ -32,7 +32,7 @@
                         :disabled="!formatted && !point"
                         @click="clear"
                     >
-                        Clear
+                        {{ __('Clear') }}
                     </button>
                 </div>
                 <ul
@@ -109,7 +109,7 @@ export default {
 
             const { map, L } = createMap(this.$refs.mapEl, {
                 center,
-                zoom: this.point ? 16 : (this.field.defaultZoom || 13),
+                zoom: this.point ? 17 : (this.field.defaultZoom || 17),
                 tileLayer: this.field.tileLayer || {},
             })
             this.map = map
@@ -126,9 +126,9 @@ export default {
                     endpoints: this.endpoints,
                 })
                 this.results = found
-                if (found.length === 0) this.error = 'No matches found.'
+                if (found.length === 0) this.error = this.__('No matches found.')
             } catch (err) {
-                this.error = err.message || 'Geocoding failed.'
+                this.error = err.message || this.__('Geocoding failed.')
             } finally {
                 this.searching = false
             }
@@ -138,7 +138,7 @@ export default {
             this.formatted = result.formatted
             this.query = result.formatted
             this.commit(result.lat, result.lng, result.formatted)
-            this.map.setView([result.lat, result.lng], 16)
+            this.map.setView([result.lat, result.lng], 17)
             this.drawMarker(result.lat, result.lng)
         },
         drawMarker(lat, lng, L) {

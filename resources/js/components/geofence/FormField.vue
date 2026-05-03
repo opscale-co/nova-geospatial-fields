@@ -15,7 +15,7 @@
                         :disabled="drawing"
                         @click="startDraw"
                     >
-                        {{ drawing ? 'Drawing…' : (hasPolygon ? 'Redraw' : 'Draw polygon') }}
+                        {{ drawing ? __('Drawing…') : (hasPolygon ? __('Redraw') : __('Draw polygon')) }}
                     </button>
                     <button
                         type="button"
@@ -24,7 +24,7 @@
                         :disabled="!hasPolygon && !drawing"
                         @click="clear"
                     >
-                        Clear
+                        {{ __('Clear') }}
                     </button>
                     <span class="geo-field-summary" data-testid="geo-geofence-summary">{{ summary }}</span>
                 </div>
@@ -55,9 +55,9 @@ export default {
         hasPolygon() { return this.vertices.length >= 3 },
         minVertices() { return this.field.minVertices || 3 },
         summary() {
-            if (this.drawing) return 'Click on the map to add vertices — double-click to finish.'
-            if (!this.hasPolygon) return 'No polygon drawn.'
-            return `${this.vertices.length} vertices`
+            if (this.drawing) return this.__('Click on the map to add vertices — double-click to finish.')
+            if (!this.hasPolygon) return this.__('No polygon drawn.')
+            return this.__(':count vertices', { count: this.vertices.length })
         },
     },
     mounted() {

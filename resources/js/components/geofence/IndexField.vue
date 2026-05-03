@@ -6,6 +6,9 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useLocalization } from 'laravel-nova'
+
+const { __ } = useLocalization()
 
 const props = defineProps({
     resource: { type: Object, required: true },
@@ -18,6 +21,6 @@ const label = computed(() => {
     if (!value || value.type !== 'Polygon') return '—'
     const ring = value.coordinates?.[0] || []
     const count = Math.max(0, ring.length - 1)
-    return `${count} vertices`
+    return __(':count vertices', { count })
 })
 </script>

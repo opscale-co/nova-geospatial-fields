@@ -18,9 +18,9 @@
                         :disabled="!point"
                         @click="clear"
                     >
-                        Clear
+                        {{ __('Clear') }}
                     </button>
-                    <span class="geo-field-hint">Click on the map to drop a pin, drag to adjust.</span>
+                    <span class="geo-field-hint">{{ __('Click on the map to drop a pin, drag to adjust.') }}</span>
                 </div>
                 <div ref="mapEl" class="geo-field-map" data-testid="geo-location-map" />
             </div>
@@ -44,7 +44,7 @@ export default {
     },
     computed: {
         summary() {
-            if (!this.point) return 'No location selected'
+            if (!this.point) return this.__('No location selected')
             return `${this.point.lat.toFixed(5)}, ${this.point.lng.toFixed(5)}`
         },
     },
@@ -73,7 +73,7 @@ export default {
 
             const { map, L } = createMap(this.$refs.mapEl, {
                 center,
-                zoom: this.field.defaultZoom || 13,
+                zoom: this.field.defaultZoom || 17,
                 tileLayer: this.field.tileLayer || {},
             })
             this.map = map

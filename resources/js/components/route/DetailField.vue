@@ -7,12 +7,12 @@
                 data-testid="geo-route-detail"
             >
                 <div v-if="!hasRoute" class="geo-field-empty" data-testid="geo-route-empty">
-                    No route set
+                    {{ __('No route set') }}
                 </div>
                 <template v-else>
                     <div class="geo-field-toolbar">
                         <span class="geo-field-summary" data-testid="geo-route-summary">
-                            {{ coordinates.length }} points · {{ distanceKm }} km · {{ durationMin }} min
+                            {{ __(':count points · :distance km · :duration min', { count: coordinates.length, distance: distanceKm, duration: durationMin }) }}
                         </span>
                     </div>
                     <div ref="mapEl" class="geo-field-map" data-testid="geo-route-map" />

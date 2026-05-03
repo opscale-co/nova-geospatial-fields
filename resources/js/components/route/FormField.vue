@@ -15,7 +15,7 @@
                         :disabled="!canSnap || snapping"
                         @click="snap"
                     >
-                        {{ snapping ? 'Snapping…' : 'Snap to roads' }}
+                        {{ snapping ? __('Snapping…') : __('Snap to roads') }}
                     </button>
                     <button
                         type="button"
@@ -24,7 +24,7 @@
                         :disabled="!waypoints.length"
                         @click="undoLast"
                     >
-                        Undo
+                        {{ __('Undo') }}
                     </button>
                     <button
                         type="button"
@@ -33,7 +33,7 @@
                         :disabled="!waypoints.length"
                         @click="clear"
                     >
-                        Clear
+                        {{ __('Clear') }}
                     </button>
                     <span class="geo-field-summary" data-testid="geo-route-summary">{{ summary }}</span>
                 </div>
@@ -70,9 +70,11 @@ export default {
             return this.waypoints.length >= 2 && !!this.field.osrmUrl
         },
         summary() {
-            if (!this.waypoints.length) return 'Click on the map to add waypoints.'
-            const km = (this.distance / 1000).toFixed(2)
-            return `${this.waypoints.length} waypoints${this.distance ? ` · ${km} km` : ''}`
+            if (!this.waypoints.length) return this.__('Click on the map to add waypoints.')
+            const count = this.waypoints.length
+            if (!this.distance) return this.__(':count waypoints', { count })
+            const distance = (this.distance / 1000).toFixed(2)
+            return this.__(':count waypoints · :distance km', { count, distance })
         },
     },
     mounted() {
@@ -158,7 +160,7 @@ export default {
                     osrmUrl: this.field.osrmUrl,
                 })
                 if (!result) {
-                    this.error = 'No route could be computed.'
+                    this.error = this.__('No route could be computed.')
                     return
                 }
                 this.coordinates = result.coordinates
@@ -167,7 +169,7 @@ export default {
                 this.drawPolyline()
                 this.commit()
             } catch (err) {
-                this.error = err.message || 'Routing failed.'
+                this.error = err.message || this.__('Routing failed.')
             } finally {
                 this.snapping = false
             }
