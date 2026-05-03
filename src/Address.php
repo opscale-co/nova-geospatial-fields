@@ -49,4 +49,12 @@ final class Address extends GeospatialField
 
         return parent::jsonSerialize();
     }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function mapDefaults(): array
+    {
+        return array_merge(parent::mapDefaults(), ['defaultZoom' => 17]);
+    }
 }

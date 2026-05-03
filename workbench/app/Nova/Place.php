@@ -29,8 +29,7 @@ class Place extends Resource
             Text::make('Name')->rules('required', 'max:255'),
 
             Location::make('Location')
-                ->defaultCenter(40.4168, -3.7038)
-                ->defaultZoom(13),
+                ->defaultCenter(40.4168, -3.7038),
 
             Address::make('Address')
                 ->geocoder('nominatim')

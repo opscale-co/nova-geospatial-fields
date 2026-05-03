@@ -15,4 +15,12 @@ namespace Opscale\Fields\Geospatial;
 final class Location extends GeospatialField
 {
     public $component = 'nova-geospatial-location';
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function mapDefaults(): array
+    {
+        return array_merge(parent::mapDefaults(), ['defaultZoom' => 17]);
+    }
 }
