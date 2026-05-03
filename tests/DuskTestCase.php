@@ -13,7 +13,21 @@ abstract class DuskTestCase extends BaseTestCase
 {
     use WithWorkbench;
 
-    protected static $baseServePort = 8089;
+    protected static $baseServePort = 8099;
+
+    /**
+     * Close any Dusk browser instance after each test so the next test
+     * starts from a clean slate. Without this, Chrome accumulates DOM
+     * and Leaflet state across our test classes, which occasionally
+     * wedges the session when the next test starts.
+     */
+    #[Override]
+    protected function tearDown(): void
+    {
+        static::closeAll();
+
+        parent::tearDown();
+    }
 
     final protected function loginToNova(Browser $browser): Browser
     {
