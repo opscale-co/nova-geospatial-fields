@@ -2,7 +2,6 @@
 /.vscode
 /vendor
 /node_modules
-/dist
 yarn.lock
 npm-debug.log
 yarn-error.log

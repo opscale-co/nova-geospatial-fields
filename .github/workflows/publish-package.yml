@@ -47,6 +47,12 @@ jobs:
         env:
           COMPOSER_AUTH: '{"http-basic": {"nova.laravel.com": {"username": "${{ secrets.NOVA_USERNAME }}", "password": "${{ secrets.NOVA_LICENSE_KEY }}"}}}'
 
+      - name: Install Nova devtool
+        run: npm run nova:install
+
+      - name: Build production assets
+        run: npm run production
+
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
