@@ -2,6 +2,12 @@
 
 All notable changes to `opscale-co/nova-geospatial-fields` are documented in this file.
 
+## [1.0.1](https://github.com/opscale-co/nova-geospatial-fields/compare/v1.0.0...v1.0.1) (2026-05-19)
+
+### Bug Fixes
+
+* **build:** ship compiled assets in release tarball ([9d52b3f](https://github.com/opscale-co/nova-geospatial-fields/commit/9d52b3f22399b14852fa4dbf15277263158e86d0))
+
 ## 1.0.0 (2026-05-04)
 
 ### Features
