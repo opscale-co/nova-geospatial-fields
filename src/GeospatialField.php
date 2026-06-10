@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Opscale\Fields\Geospatial;
 
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\SupportsDependentFields;
 use Opscale\Fields\Geospatial\Concerns\HandlesGeoJsonPayload;
 use Opscale\Fields\Geospatial\Concerns\HasMapOptions;
 
@@ -19,6 +20,7 @@ abstract class GeospatialField extends Field
 {
     use HandlesGeoJsonPayload;
     use HasMapOptions;
+    use SupportsDependentFields;
 
     /**
      * Merge the package-level map defaults into meta just before the

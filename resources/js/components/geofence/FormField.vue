@@ -35,12 +35,12 @@
 </template>
 
 <script>
-import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
 import { createMap, L } from '../../services/leaflet.js'
 import 'leaflet-draw'
 
 export default {
-    mixins: [FormField, HandlesValidationErrors],
+    mixins: [DependentFormField, HandlesValidationErrors],
     props: ['resourceName', 'resourceId', 'field'],
     data() {
         return {
@@ -69,7 +69,7 @@ export default {
     },
     methods: {
         setInitialValue() {
-            const raw = this.field.value
+            const raw = this.currentField.value
             if (raw && raw.type === 'Polygon' && Array.isArray(raw.coordinates?.[0])) {
                 this.vertices = raw.coordinates[0].map(([lng, lat]) => [lat, lng])
                 this.value = JSON.stringify(raw)

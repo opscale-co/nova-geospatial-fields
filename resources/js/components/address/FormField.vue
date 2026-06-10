@@ -56,12 +56,12 @@
 </template>
 
 <script>
-import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import { DependentFormField, HandlesValidationErrors } from 'laravel-nova'
 import { createMap } from '../../services/leaflet.js'
 import { geocode } from '../../services/geocoder.js'
 
 export default {
-    mixins: [FormField, HandlesValidationErrors],
+    mixins: [DependentFormField, HandlesValidationErrors],
     props: ['resourceName', 'resourceId', 'field'],
     data() {
         return {
@@ -91,7 +91,7 @@ export default {
     },
     methods: {
         setInitialValue() {
-            const raw = this.field.value
+            const raw = this.currentField.value
             if (raw && raw.coordinates) {
                 const [lng, lat] = raw.coordinates
                 this.point = { lat, lng }
