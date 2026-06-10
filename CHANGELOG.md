@@ -2,6 +2,12 @@
 
 All notable changes to `opscale-co/nova-geospatial-fields` are documented in this file.
 
+## [1.1.0](https://github.com/opscale-co/nova-geospatial-fields/compare/v1.0.1...v1.1.0) (2026-06-10)
+
+### Features
+
+* **fields:** support Nova dependsOn on geospatial fields ([397849f](https://github.com/opscale-co/nova-geospatial-fields/commit/397849fc16206d7cde1af1ceea64f9385e0a4dd5))
+
 ## [1.0.1](https://github.com/opscale-co/nova-geospatial-fields/compare/v1.0.0...v1.0.1) (2026-05-19)
 
 ### Bug Fixes
